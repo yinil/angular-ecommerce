@@ -1,0 +1,9 @@
+<p>store-list works!</p>
+<p *ngFor="let store of stores">
+    {{store.storeName}}
+</p>
+<ul>
+    <li *ngFor="let store of stores">
+        <a routerLink='/store/{{store.id}}' routerLinkActive="active">{{store.name}}</a>
+    </li>
+</ul>

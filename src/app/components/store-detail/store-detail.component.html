@@ -1,0 +1,24 @@
+<p>store-detail works!</p>
+<div *ngIf="store">
+    {{store.storeId}}<br/>
+    {{store.storeName}}<br/>
+    {{store.storePhone}}<br/>
+    {{store.storeEmail}}<br/>
+    {{store.storeWebsite}}<br/>
+    {{store.storeZip}}<br/>
+    {{store.storeCity}}<br/>
+    {{store.storeState}}<br/>
+    {{store.storeStreet1}}<br/>
+    {{store.storeStreet2}}<br/>
+    {{store.storeClient}}<br/>
+</div>
+<div *ngIf="items">
+    <table>
+        <tr *ngFor="let item of items">
+            <td>{{item.itemName}}</td>
+            <td>{{item.itemDescription}}</td>
+            <td>{{item.itemPrice}}</td>
+        </tr>
+    </table>
+</div>
+
