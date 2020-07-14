@@ -9,7 +9,9 @@ import { map } from 'rxjs/operators'
 })
 export class StoreService {
   private baseUrl = 'http://localhost:8080/stores';
+  
   constructor(private httpclient : HttpClient) { }
+  
   getStoreList() {
     return this.httpclient.get(this.baseUrl);
   }
@@ -34,10 +36,4 @@ export class StoreService {
     return throwError (
       'Something bad happened; please try again later.');
   };
-}
-
-interface GetResponse {
-  _embedded: {
-    stores: Store[];
-  }
 }

@@ -3,6 +3,7 @@ import { Store } from 'src/app/common/store';
 import { Product } from 'src/app/common/product';
 import { StoreService } from 'src/app/services/store.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-store-detail',
@@ -14,7 +15,8 @@ export class StoreDetailComponent implements OnInit {
   items : Product[];
   storeId : string;
   constructor(private storeService : StoreService,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.has('id')) {
@@ -41,4 +43,13 @@ export class StoreDetailComponent implements OnInit {
     )
   }
 
+  addToCart(item) {
+    console.log(item.itemId);
+    this.cartService.addToCart(item);
+    // need to prompt added to cart
+  }
+  removeFromCart(item) {
+    console.log(item.itemId);
+    console.log(this.cartService.removeFromCart(item));
+  }
 }

@@ -1,0 +1,27 @@
+<p>cart works!</p>
+<div *ngIf="items">
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let item of items | keyvalue">
+            <td>
+                {{item.value.name}}
+            </td>
+            <td>
+                {{item.value.quantity}}
+            </td>
+            <td>
+                {{item.value.price | currency: 'USD'}}
+            </td>
+        </tr>
+    </table>
+    <div>
+        Total: {{total | currency:'USD'}}
+    </div>
+    <div>
+        <a type="button" href="checkout" class="btn btn-primary">Check Out</a>
+    </div>
+</div>

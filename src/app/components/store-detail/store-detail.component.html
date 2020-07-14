@@ -1,23 +1,33 @@
 <p>store-detail works!</p>
 <div *ngIf="store">
-    {{store.storeId}}<br/>
-    {{store.storeName}}<br/>
+    <h2>{{store.storeName}}</h2>
+    <!-- {{store.storeId}}<br/> -->
     {{store.storePhone}}<br/>
     {{store.storeEmail}}<br/>
     {{store.storeWebsite}}<br/>
-    {{store.storeZip}}<br/>
-    {{store.storeCity}}<br/>
-    {{store.storeState}}<br/>
     {{store.storeStreet1}}<br/>
     {{store.storeStreet2}}<br/>
-    {{store.storeClient}}<br/>
+    {{store.storeCity}} {{store.storeState}} {{store.storeZip}}<br/>
+    <!-- {{store.storeClient}}<br/> -->
 </div>
+<br>
 <div *ngIf="items">
-    <table>
+    <h3>Products</h3>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Add/Remove</th>
+        </tr>
         <tr *ngFor="let item of items">
+            <!-- <td>{{item.itemId}}</td> -->
             <td>{{item.itemName}}</td>
             <td>{{item.itemDescription}}</td>
-            <td>{{item.itemPrice}}</td>
+            <td>{{item.itemPrice | currency:'USD'}}</td>
+            <td>
+                <button type="button" class="btn btn-light" (click)="addToCart(item)"><i class="fas fa-plus-circle"></i></button>
+                <button type="button" class="btn btn-light" (click)="removeFromCart(item)"><i class="fas fa-minus-circle"></i></button></td>
         </tr>
     </table>
 </div>

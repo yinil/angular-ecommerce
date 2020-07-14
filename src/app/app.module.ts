@@ -9,8 +9,8 @@ import { HttpClientModule} from '@angular/common/http'
 import { StoreService } from './services/store.service'
 import { Routes, RouterModule } from '@angular/router';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
-import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { pathToFileURL } from 'url';
 
 const routes : Routes = [
@@ -28,7 +28,7 @@ const routes : Routes = [
     StoreListComponent,
     StoreDetailComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

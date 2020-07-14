@@ -10,6 +10,4 @@ export class Store {
 	storeStreet1 : string;
 	storeStreet2 : string;
 	storeClient : string;
-	storeCreatedAt : Date;
-	storeUpdatedAt : Date;
 }
