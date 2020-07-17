@@ -21,7 +21,7 @@
     <div>
         Total: {{total | currency:'USD'}}
     </div>
-    <div>
-        <a type="button" href="checkout" class="btn btn-primary">Check Out</a>
+    <div [hidden]="count==0">
+        <a type="button" [routerLink]="[ '/checkout' ]" routerLinkActive="active" class="btn btn-primary">Check Out</a>
     </div>
 </div>

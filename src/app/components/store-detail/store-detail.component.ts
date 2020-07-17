@@ -28,7 +28,7 @@ export class StoreDetailComponent implements OnInit {
     }
     this.route.paramMap.subscribe(() => {
       this.getStoreInfo();
-    })
+    });
   }
 
   getStoreInfo() {
@@ -45,11 +45,11 @@ export class StoreDetailComponent implements OnInit {
 
   addToCart(item) {
     console.log(item.itemId);
-    this.cartService.addToCart(item);
+    this.cartService.add(item);
     // need to prompt added to cart
   }
   removeFromCart(item) {
     console.log(item.itemId);
-    console.log(this.cartService.removeFromCart(item));
+    console.log(this.cartService.remove(item));
   }
 }

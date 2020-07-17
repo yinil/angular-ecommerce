@@ -1,55 +1,57 @@
 import { Injectable } from '@angular/core';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { cartItem } from '../common/cartItem';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart : Map<String, cartItem> = new Map();
+  private count = new BehaviorSubject<number>(0);
+  cast_count = this.count.asObservable();
+  private cart = new BehaviorSubject<Map<String, cartItem>>(new Map<String, cartItem>());
+  cast_cart = this.cart.asObservable();
+
   constructor() { }
-  // addToCart(item) {
-  //   this.items.push(item);
-  // }
+
   getItems() {
-    return this.cart;
+    return this.cart.value;
   }
-  clearCart() {
-    this.cart = new Map();
-    return this.cart;
-  }
-  addToCart(item) {
-    console.log("before add: "+ this.cart.size);
-    if (!this.cart.has(item.itemId)) {
-      console.log(0);
+
+  add(item) {
+    let map = this.cart.value;
+    if (!map.has(item.itemId)) {
       const carit =  {} as cartItem;
       carit.name = item.itemName;
       carit.price = item.itemPrice;
       carit.quantity = 1;
-      this.cart.set(item.itemId, carit);
-      console.log(this.cart.get(item.itemId).quantity);
+      map.set(item.itemId, carit);
     } else {
-      console.log(this.cart.get(item.itemId).quantity);
-      const carit = this.cart.get(item.itemId);
+      const carit = map.get(item.itemId);
       carit.quantity += 1;
-      this.cart.set(item.itemId, carit);
-      console.log(this.cart.get(item.itemId).quantity);
+      map.set(item.itemId, carit);
     }
-    console.log("after add: " + this.cart.size);
+    this.cart.next(map);
+    this.count.next(this.count.value + 1);
+    return this.count.value;
   }
-  removeFromCart(item) {
-    console.log("before remove: "+ this.cart.size);
-    if (!this.cart.has(item.itemId)) {
-      return false;
+
+  remove(item) {
+    if (this.count.value == 0) {
+      return 0;
     }
-    let count = this.cart.get(item.itemId);
+    let map = this.cart.value;
+    if (!map.has(item.itemId)) {
+      return this.count.value;
+    }
+    let count = map.get(item.itemId);
     if (count.quantity == 1) {
-      this.cart.delete(item.itemId);
-      return true;
+      map.delete(item.itemId);
+    } else {
+      count.quantity -= 1;
+      map.set(item.itemId, count);
     }
-    count.quantity -= 1;
-    this.cart.set(item.itemId, count);
-    console.log("after remove: " + this.cart.size);
-    return true;
+    this.cart.next(map);
+    this.count.next(this.count.value - 1);
+    return this.count.value;
   }
 }

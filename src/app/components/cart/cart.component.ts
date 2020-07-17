@@ -9,22 +9,24 @@ import { cartItem } from 'src/app/common/cartItem';
 })
 export class CartComponent implements OnInit {
   items : Map<String, cartItem>;
+  count : number;
   total = 0;
   constructor(
     private cartService : CartService
   ) { }
 
   ngOnInit(): void {
-    this.items = this.cartService.getItems();
-    this.getTotal();
+    this.cartService.cast_cart.subscribe(
+      cart => {
+        this.items = cart;
+        this.getTotal();
+      }
+    );
+    this.cartService.cast_count.subscribe (
+      count => {this.count = count}
+    )
   }
 
-  // TODO: findone product price Spring boot backend BuyerProductController
-  getPrices() {
-
-  }
-
-  // TODO: calculate total
   getTotal() {
     this.items.forEach((value: cartItem, key: String) => {
       this.total += value.price * value.quantity;

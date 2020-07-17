@@ -1,10 +1,78 @@
 <p>checkout works!</p>
-<div>
-    Delivery info
-</div>
-<div>
-    Payment info
-</div>
-<div>
-    Items
-</div>
+<!-- 
+private String name; ok
+private String zip; ok
+private String phone; ok
+private String email; ok
+private String city; ok
+private String state; ok
+private String street1; ok
+private String street2; ok
+private String id; ok
+private String items;
+private String storeid; -->
+<form>
+    <div>
+        Delivery
+        <div>
+            <!-- need to get customer id and store ids -->
+            <div class="form-group">
+                <input class="form-control" id="first" aria-describedby="first" placeholder="First Name">
+                <!-- <small id="name" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="last" aria-describedby="last" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="street1" aria-describedby="street1" placeholder="Street Address">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="street2" aria-describedby="street2" placeholder="Apt, suite, floor, etc. (optional)">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="zip" aria-describedby="zip" placeholder="Zip code">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="state" aria-describedby="state" placeholder="State">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="city" aria-describedby="city" placeholder="City">
+            </div>
+            <input type="hidden" name="clientid" value="0112">
+            <input type="hidden" name="clientemail" value="a@email.com">
+        </div>
+    </div>
+    <div>
+        Payment
+        <div class="form-group">
+            <input class="form-control" id="phone" aria-describedby="phone" placeholder="Telephone">
+        </div>
+    </div>
+    <div>
+        Items
+        <div *ngIf="items">
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                <tr *ngFor="let item of items | keyvalue">
+                    <td>
+                        {{item.value.name}}
+                    </td>
+                    <td>
+                        {{item.value.quantity}}
+                    </td>
+                    <td>
+                        {{item.value.price | currency: 'USD'}}
+                    </td>
+                </tr>
+            </table>
+            <div>
+                Total: {{total | currency:'USD'}}
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
