@@ -1,13 +1,15 @@
+import { OrderDetail } from './order-detail';
+
 export interface OrderFormModel {
-    name:String;
-    zip:String;
-    phone:String;
-    email:String;
-    city:String;
-    state:String;
-    street1:String;
-    street2:String;
-    id:String;
-    items:String;
-    storeid:String;
+    name:string;
+    zip:string;
+    phone:string;
+    email:string;
+    city:string;
+    state:string;
+    street1:string;
+    street2:string;
+    id:string;
+    items:OrderDetail[];
+    storeid:string;
 }
