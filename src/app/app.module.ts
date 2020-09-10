@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule} from '@angular/common/http'
-import { FormsModule } from '@angular/forms'
+import { HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { StoreListComponent } from './components/store-list/store-list.component';
-import { StoreService } from './services/store.service'
+import { StoreService } from './services/store.service';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -16,8 +16,10 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TestComponent } from './components/test/test.component';
+import { CheckoutConfirmComponent } from './components/checkout-confirm/checkout-confirm.component';
+import { CartDisplayComponent } from './components/cart-display/cart-display.component';
 
-const routes : Routes = [
+const routes: Routes = [
   {path: 'stores', component: StoreListComponent},
   {path: 'store/:id', component: StoreDetailComponent},
   {path: 'cart', component: CartComponent },
@@ -25,6 +27,7 @@ const routes : Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'test', component: TestComponent},
+  {path: 'checkout_confirm', component: CheckoutConfirmComponent},
   {path: '', redirectTo: '/stores', pathMatch: 'full'},
   {path: '**', redirectTo: '/stores', pathMatch: 'full'}
 ];
@@ -39,6 +42,8 @@ const routes : Routes = [
     LoginComponent,
     SignupComponent,
     TestComponent,
+    CheckoutConfirmComponent,
+    CartDisplayComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -43,9 +43,8 @@ export class StoreDetailComponent implements OnInit {
     )
   }
 
-  addToCart(item) {
-    console.log(item.itemId);
-    this.cartService.add(item);
+  addToCart(item, storeId) {
+    this.cartService.add(item, storeId);
     // need to prompt added to cart
   }
   removeFromCart(item) {

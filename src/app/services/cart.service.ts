@@ -17,13 +17,14 @@ export class CartService {
     return this.cart.value;
   }
 
-  add(item) {
+  add(item, storeId) {
     let map = this.cart.value;
     if (!map.has(item.itemId)) {
       const carit =  {} as cartItem;
       carit.name = item.itemName;
       carit.price = item.itemPrice;
       carit.quantity = 1;
+      carit.storeId = storeId;
       map.set(item.itemId, carit);
     } else {
       const carit = map.get(item.itemId);
@@ -36,7 +37,7 @@ export class CartService {
   }
 
   remove(item) {
-    if (this.count.value == 0) {
+    if (this.count.value === 0) {
       return 0;
     }
     let map = this.cart.value;

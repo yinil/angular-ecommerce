@@ -5,4 +5,5 @@ export class Product {
     // itemCategory : string;
     itemPrice : string;
     // itemPic : string;
+    itemStore : string;
 }

@@ -1,0 +1,14 @@
+<p>checkout-confirm works!</p>
+<app-cart-display [items]="items" [total]="total"></app-cart-display>
+Delivery Information
+<table class="table">
+  <tr><th>Full name</th><td>{{model.name}}</td></tr>
+  <tr><th>Street Address</th><td>{{model.street1}}</td></tr>
+  <tr><th>Apt, suite, floor, etc. (optional)</th><td>{{model.street2}}</td></tr>
+  <tr><th>Zip code</th><td>{{model.zip}}</td></tr>
+  <tr><th>State</th><td>{{model.state}}</td></tr>
+  <tr><th>City</th><td>{{model.city}}</td></tr>
+  <tr><th>Telephone</th><td>{{model.phone}}</td></tr>
+</table>
+Payment Information
+<button type="submit" class="btn btn-primary">Submit</button>

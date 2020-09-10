@@ -8,11 +8,11 @@ import { cartItem } from 'src/app/common/cartItem';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  items : Map<String, cartItem>;
-  count : number;
+  items: Map<String, cartItem>;
+  count: number;
   total = 0;
   constructor(
-    private cartService : CartService
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -23,14 +23,14 @@ export class CartComponent implements OnInit {
       }
     );
     this.cartService.cast_count.subscribe (
-      count => {this.count = count}
-    )
+      count => {this.count = count; }
+    );
   }
 
   getTotal() {
-    this.items.forEach((value: cartItem, key: String) => {
+    this.items.forEach((value: cartItem, key: string) => {
       this.total += value.price * value.quantity;
-    })
+    });
   }
 
 }

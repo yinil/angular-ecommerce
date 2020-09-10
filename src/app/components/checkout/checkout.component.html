@@ -1,35 +1,12 @@
 <p>checkout works!</p>
-
-<div *ngIf="(items | json) == '{}'">
+{{items.value | json}}
+<div *ngIf="!items || items.size==0">
     Your cart is empty. Please add items to your cart before checkout.
 </div>
-<div *ngIf="(items | json) != '{}'">
+<div *ngIf="items && items.size!=0">
     <div>
         <h3>Items In Cart</h3>
-        <div *ngIf="items">
-            <table class="table">
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-                <tr *ngFor="let item of items | keyvalue">
-                    <td>
-                        {{item.value.name}}
-                    </td>
-                    <td>
-                        {{item.value.quantity}}
-                    </td>
-                    <td>
-                        {{item.value.price | currency: 'USD'}}
-                    </td>
-                </tr>
-            </table>
-            <div>
-                Total: {{total | currency:'USD'}}
-            </div>
-        </div>
-        
+        <app-cart-display [items]="items" [total]="total"></app-cart-display>
     </div>
     <form (submit)="submit()">
         <div>
@@ -63,7 +40,9 @@
         <div>
             <h3>Payment Information</h3>
         </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+        <button type="button" class="btn btn-primary" (click)="goToCheckoutConfirm()">Review Order</button>
+<!--        <button type="submit" class="btn btn-primary" routerLink="/checkout_confirm" routerLinkActive="active">Review order</button>-->
     </form>
 </div>
