@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { cartItem } from '../common/cartItem';
 import { BehaviorSubject } from 'rxjs';
+import {OrderFormModel} from '../common/order-form-model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CartService {
   cast_count = this.count.asObservable();
   private cart = new BehaviorSubject<Map<String, cartItem>>(new Map<String, cartItem>());
   cast_cart = this.cart.asObservable();
-
+  model: OrderFormModel = new OrderFormModel();
   constructor() { }
 
   getItems() {

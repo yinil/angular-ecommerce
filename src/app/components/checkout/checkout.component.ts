@@ -16,41 +16,23 @@ import { ActivatedRoute} from '@angular/router';
 export class CheckoutComponent implements OnInit {
   items;
   total: number;
-  model: OrderFormModel;
+  model: OrderFormModel = new OrderFormModel();
   cart: OrderDetail[] = [];
   constructor(
     private orderService: OrderService,
     private cartService: CartService,
     private userService: UserService,
     private router: Router,
-    private activatedRoute : ActivatedRoute
+    private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-    this.model = {
-        name: '',
-        zip: '',
-        phone: '',
-        email: '',
-        city: '',
-        state: '',
-        street1: '',
-        street2: '',
-        id: '',
-        storeid: '',
-        items: this.cart
-    };
     this.total = 0;
     this.getItems();
     this.getTotal();
   }
 
-  submit() {
-    this.model.id = this.userService.userid;
-    this.orderService.createOrder(this.model).subscribe(
-      data => console.log(data)
-    );
-  }
+
 
   getItems() {
     this.items = this.cartService.getItems();
@@ -59,6 +41,8 @@ export class CheckoutComponent implements OnInit {
       const od: OrderDetail = {
         detailItem : key,
         detailQuantity : value.quantity,
+        detailItemname : value.name,
+        detailPrice : value.price
       };
       this.cart.push(od);
     });
@@ -73,6 +57,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   goToCheckoutConfirm() {
-    this.router.navigate(['/checkout_confirm'], {relativeTo: this.activatedRoute, queryParams: {model: this.model, items: this.items, total: this.total}});
+    this.model.id = this.userService.userid;
+    this.cartService.model = this.model;
+    this.router.navigate(['/checkout_confirm'],
+      {relativeTo: this.activatedRoute});
   }
 }

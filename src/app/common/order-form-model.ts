@@ -1,6 +1,6 @@
 import { OrderDetail } from './order-detail';
 
-export interface OrderFormModel {
+export class OrderFormModel {
     name:string;
     zip:string;
     phone:string;

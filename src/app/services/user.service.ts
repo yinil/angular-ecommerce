@@ -10,7 +10,8 @@ export class UserService {
   userid: string;
   token: string;
   constructor(private http: HttpClient) {
-    this.userid = '';
+    // this.userid = '';
+    this.userid = '0112';
     this.token = '';
   }
   // tested ok!
