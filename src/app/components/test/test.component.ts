@@ -13,7 +13,8 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     // var url = 'http://localhost:8080/resource';
-    // this.http.get(url).subscribe(data => this.greeting = data);
+    const url = 'http://localhost:8011/users/users/status/check';
+    this.http.get(url).subscribe(data => console.log(data));
   }
 
 }

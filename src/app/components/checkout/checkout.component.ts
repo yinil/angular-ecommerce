@@ -13,18 +13,16 @@ import { CartService } from 'src/app/services/cart.service';
 export class CheckoutComponent implements OnInit {
   items;
   total;
-  model : OrderFormModel;
-  cart : OrderDetail[] = [];
+  model: OrderFormModel;
+  cart: OrderDetail[] = [];
   constructor(
-    private orderService : OrderService,
-    private cartService : CartService
+    private orderService: OrderService,
+    private cartService: CartService
     ) { }
 
   ngOnInit(): void {
-    this.getItems();
-    this.getTotal();
     this.model = {
-        name:'',
+        name: '',
         zip: '',
         phone: '',
         email: 'a@email.com',
@@ -35,32 +33,34 @@ export class CheckoutComponent implements OnInit {
         id: '0112',
         storeid: '123456',
         items: this.cart
-    }
+    };
+    this.getItems();
+    this.getTotal();
   }
 
   submit() {
     console.log(this.model);
     this.orderService.createOrder(this.model).subscribe(
       data => console.log(data)
-    )
+    );
   }
 
   getItems() {
     this.items = this.cartService.getItems();
     this.cart = [];
     this.items.forEach((value: cartItem, key: string) => {
-      let od : OrderDetail = {
+      const od: OrderDetail = {
         detailItem : key,
         detailQuantity : value.quantity
-      }
+      };
       this.cart.push(od);
     });
     this.model.items = this.cart;
   }
 
   getTotal() {
-    this.items.forEach((value: cartItem, key: String) => {
+    this.items.forEach((value: cartItem, key: string) => {
       this.total += value.price * value.quantity;
-    })
+    });
   }
 }
