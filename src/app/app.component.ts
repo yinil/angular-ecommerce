@@ -18,8 +18,22 @@ export class AppComponent implements OnInit{
     );
   }
 
+  private tokenExpired(token: string) {
+    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    return (Math.floor((new Date).getTime() / 1000)) >= expiry;
+  }
+
+  logout() {
+    this.userService.logout();
+  }
+
   authenticated() {
-    return this.userService.authenticated;
+    let token = localStorage.getItem(this.userService.tokenKey);
+    if (token == null || token.length == 0 || this.tokenExpired(token)) {
+      return false;
+    }
+    return true;
+    // return this.userService.authenticated;
   }
 
 }

@@ -18,6 +18,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { TestComponent } from './components/test/test.component';
 import { CheckoutConfirmComponent } from './components/checkout-confirm/checkout-confirm.component';
 import { CartDisplayComponent } from './components/cart-display/cart-display.component';
+import {AccountComponent} from './components/account/account.component';
+import { AccountHomeComponent } from './components/account-home/account-home.component';
+import { AccountOrdersComponent } from './components/account-orders/account-orders.component';
+import { AccountMessagesComponent } from './components/account-messages/account-messages.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { OrderFailComponent } from './components/order-fail/order-fail.component';
 
 const routes: Routes = [
   {path: 'stores', component: StoreListComponent},
@@ -28,6 +34,8 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'test', component: TestComponent},
   {path: 'checkout_confirm', component: CheckoutConfirmComponent},
+  {path: 'account', component: AccountComponent},
+  {path: 'order_success', component: OrderSuccessComponent},
   {path: '', redirectTo: '/stores', pathMatch: 'full'},
   {path: '**', redirectTo: '/stores', pathMatch: 'full'}
 ];
@@ -44,6 +52,12 @@ const routes: Routes = [
     TestComponent,
     CheckoutConfirmComponent,
     CartDisplayComponent,
+    AccountComponent,
+    AccountHomeComponent,
+    AccountOrdersComponent,
+    AccountMessagesComponent,
+    OrderSuccessComponent,
+    OrderFailComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

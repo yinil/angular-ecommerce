@@ -1,37 +1,44 @@
-<p>checkout-confirm works!</p>
-<div *ngIf="model">
-  <h3>Items</h3>
-  <table class="table">
-    <tr>
-      <th>Product</th><th>Quantity</th><th>Price</th>
-    </tr>
-    <tr *ngFor="let item of model.items">
-      <td>
-        {{item.detailItemname}}
-      </td>
-      <td>
-        {{item.detailQuantity}}
-      </td>
-      <td>
-        {{item.detailPrice | currency: 'USD'}}
-      </td>
-    </tr>
-  </table>
-  <div>
-    Total: {{total | currency:'USD'}}
+<!-- <p>checkout-confirm works!</p> -->
+<div class="container">
+  <div *ngIf="model">
+    <div>
+      <h3>Items</h3>
+      <table class="table">
+        <tr>
+          <th>Product</th><th>Quantity</th><th>Price</th>
+        </tr>
+        <tr *ngFor="let item of model.items">
+          <td>
+            {{item.detailItemname}}
+          </td>
+          <td>
+            {{item.detailQuantity}}
+          </td>
+          <td>
+            {{item.detailPrice | currency: 'USD'}}
+          </td>
+        </tr>
+      </table>
+      <div>
+        Total: {{total | currency:'USD'}}
+      </div>
+    </div>
+    <div>
+      <h3>Delivery Information</h3>
+      <table class="table">
+        <tr><th>Full name</th><td>{{model.name}}</td></tr>
+        <tr><th>Street Address</th><td>{{model.street1}}</td></tr>
+        <tr><th>Apt, suite, floor, etc. (optional)</th><td>{{model.street2}}</td></tr>
+        <tr><th>Zip code</th><td>{{model.zip}}</td></tr>
+        <tr><th>State</th><td>{{model.state}}</td></tr>
+        <tr><th>City</th><td>{{model.city}}</td></tr>
+        <tr><th>Telephone</th><td>{{model.phone}}</td></tr>
+        <tr><th>Email</th><td>{{model.email}}</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Payment Information</h3>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
   </div>
-
-  <h3>Delivery Information</h3>
-  <table class="table">
-    <tr><th>Full name</th><td>{{model.name}}</td></tr>
-    <tr><th>Street Address</th><td>{{model.street1}}</td></tr>
-    <tr><th>Apt, suite, floor, etc. (optional)</th><td>{{model.street2}}</td></tr>
-    <tr><th>Zip code</th><td>{{model.zip}}</td></tr>
-    <tr><th>State</th><td>{{model.state}}</td></tr>
-    <tr><th>City</th><td>{{model.city}}</td></tr>
-    <tr><th>Telephone</th><td>{{model.phone}}</td></tr>
-  </table>
-  <h3>Payment Information</h3>
-  <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
 </div>
-

@@ -11,17 +11,23 @@ import {stringify} from 'querystring';
 export class OrderService {
   url = "http://localhost:8080/order";
   constructor(
-    private cartService : CartService,
     private http : HttpClient,
     private userService: UserService
   ) { }
 
   createOrder(model) {
+    console.log(this.userService.token);
+    if (this.userService.token == null) {
+      return null;
+    }
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: stringify(this.userService.token)
+        Authorization: this.userService.token
       })
     };
     return this.http.post(this.url + '/create', model, httpOptions);
   }
+  // TODO get order list
+  // TODO cancel order
+  // TODO get order details
 }

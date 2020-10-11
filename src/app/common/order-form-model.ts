@@ -11,5 +11,4 @@ export class OrderFormModel {
     street2:string;
     id:string;
     items:OrderDetail[];
-    storeid:string;
 }

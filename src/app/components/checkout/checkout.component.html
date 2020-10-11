@@ -1,48 +1,53 @@
-<p>checkout works!</p>
-{{items.value | json}}
-<div *ngIf="!items || items.size==0">
-    Your cart is empty. Please add items to your cart before checkout.
-</div>
-<div *ngIf="items && items.size!=0">
-    <div>
-        <h3>Items In Cart</h3>
-        <app-cart-display [items]="items" [total]="total"></app-cart-display>
+<!-- <p>checkout works!</p> -->
+<div class="container">
+    <div *ngIf="!items || items.size==0">
+        Your cart is empty. Please add items to your cart before checkout.
     </div>
-    <form (submit)="submit()">
+    <div *ngIf="items && items.size!=0">
         <div>
-            <h3>Delivery Information</h3>
+            <h3>Items In Cart</h3>
+            <app-cart-display [items]="items" [total]="total"></app-cart-display>
+        </div>
+        <form>
             <div>
-                <!-- need to get customer id and store ids -->
-                <div class="form-group">
-                    <input class="form-control" id="name" name="name" aria-describedby="name" placeholder="Full Name" [(ngModel)]="model.name">
-                    <!-- <small id="name" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="street1" name="street1" aria-describedby="street1" placeholder="Street Address" [(ngModel)]="model.street1">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="street2" name="street2" aria-describedby="street2" placeholder="Apt, suite, floor, etc. (optional)" [(ngModel)]="model.street2">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="zip" aria-describedby="zip" placeholder="Zip code" [(ngModel)]="model.zip" name="zip">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="state" aria-describedby="state" placeholder="State" [(ngModel)]="model.state" name="state">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="city" aria-describedby="city" placeholder="City" [(ngModel)]="model.city" name="city">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" id="phone" aria-describedby="phone" placeholder="Telephone" [(ngModel)]="model.phone" name="phone">
+                <h3>Delivery Information</h3>
+                <div>
+                    <!-- need to get customer id and store ids -->
+                    <div class="form-group">
+                        <input class="form-control" id="name" name="name" aria-describedby="name" placeholder="Full Name" [(ngModel)]="model.name">
+                        <!-- <small id="name" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="street1" name="street1" aria-describedby="street1" placeholder="Street Address" [(ngModel)]="model.street1">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="street2" name="street2" aria-describedby="street2" placeholder="Apt, suite, floor, etc. (optional)" [(ngModel)]="model.street2">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="zip" aria-describedby="zip" placeholder="Zip code" [(ngModel)]="model.zip" name="zip">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="state" aria-describedby="state" placeholder="State" [(ngModel)]="model.state" name="state">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="city" aria-describedby="city" placeholder="City" [(ngModel)]="model.city" name="city">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="phone" aria-describedby="phone" placeholder="Telephone" [(ngModel)]="model.phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="email" aria-describedby="email" placeholder="Email address" [(ngModel)]="model.email" name="email">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <h3>Payment Information</h3>
-        </div>
-
-<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
-        <button type="button" class="btn btn-primary" (click)="goToCheckoutConfirm()">Review Order</button>
-<!--        <button type="submit" class="btn btn-primary" routerLink="/checkout_confirm" routerLinkActive="active">Review order</button>-->
-    </form>
+            <div>
+                <h3>Payment Information</h3>
+            </div>
+    
+    <!--        <button type="submit" class="btn btn-primary">Submit</button>-->
+            <button type="button" class="btn btn-primary" (click)="goToCheckoutConfirm()">Review Order</button>
+    <!--        <button type="submit" class="btn btn-primary" routerLink="/checkout_confirm" routerLinkActive="active">Review order</button>-->
+        </form>
+    </div>
 </div>
+

@@ -1,6 +1,6 @@
 export class LoginRequestModel {
-    email : String;
-    password : String;
+    email : string;
+    password : string;
     constructor(e, p) {
         this.email = e;
         this.password = p;

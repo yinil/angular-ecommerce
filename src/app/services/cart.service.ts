@@ -7,9 +7,9 @@ import {OrderFormModel} from '../common/order-form-model';
   providedIn: 'root'
 })
 export class CartService {
-  private count = new BehaviorSubject<number>(0);
+  count = new BehaviorSubject<number>(0);
   cast_count = this.count.asObservable();
-  private cart = new BehaviorSubject<Map<String, cartItem>>(new Map<String, cartItem>());
+  cart = new BehaviorSubject<Map<String, cartItem>>(new Map<String, cartItem>());
   cast_cart = this.cart.asObservable();
   model: OrderFormModel = new OrderFormModel();
   constructor() { }

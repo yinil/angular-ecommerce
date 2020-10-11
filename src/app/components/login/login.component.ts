@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     const user = new LoginRequestModel(this.credentials.email, this.credentials.password);
     this.userService.login(user).subscribe(
       data => {
-        console.log('data', data);
+        // console.log('data', data);
         this.error = '';
       },
       error => {

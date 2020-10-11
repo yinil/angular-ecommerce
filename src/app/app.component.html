@@ -1,12 +1,11 @@
-<h3 [hidden]="!authenticated()">logged in</h3>
-
+<p [hidden]="!authenticated()">logged in</p>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -22,11 +21,14 @@
                 <a class="nav-link" [routerLink]="[ '/signup' ]" routerLinkActive="active" [hidden]="authenticated()">Sign Up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" [hidden]="!authenticated()">Log Out</a>
+              <a class="nav-link" [routerLink]="[ '/account' ]" routerLinkActive="active" [hidden]="!authenticated()">Account</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="" [hidden]="!authenticated()" (click)="logout()">Log Out</a>
+            </li>
+            <!-- <li class="nav-item">
               <a class="nav-link" [routerLink]="[ '/test' ]" routerLinkActive="active">Test</a>
-          </li>
+            </li> -->
             <!-- dropdown -->
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

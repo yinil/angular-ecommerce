@@ -19,7 +19,6 @@ export class CheckoutComponent implements OnInit {
   model: OrderFormModel = new OrderFormModel();
   cart: OrderDetail[] = [];
   constructor(
-    private orderService: OrderService,
     private cartService: CartService,
     private userService: UserService,
     private router: Router,
@@ -31,8 +30,6 @@ export class CheckoutComponent implements OnInit {
     this.getItems();
     this.getTotal();
   }
-
-
 
   getItems() {
     this.items = this.cartService.getItems();
