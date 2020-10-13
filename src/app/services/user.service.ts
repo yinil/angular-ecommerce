@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { LoginRequestModel } from '../common/login-request-model';
 
@@ -15,11 +15,31 @@ export class UserService {
   tokenKey = "ec-token-kas9";
   idKey = "ec-userId-kj2349";
   emailKey = "ec-email-k83hf";
+
   constructor(private http: HttpClient) {
     this.userid = localStorage.getItem(this.idKey);
     this.token = localStorage.getItem(this.tokenKey);
     this.emailKey = localStorage.getItem(this.emailKey);
   }
+
+  getUserDetails() {
+    var url = 'http://172.16.100.135:8011/user-ec/user/' + localStorage.getItem(this.idKey);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: localStorage.getItem(this.tokenKey)
+      })
+    };
+    return this.http.get(url, httpOptions).pipe(map((data, error) => {
+      if (!error) {
+        // console.log("user details", data);
+        return data;
+      } else {
+        console.log("usre details", error);
+        return error;
+      }
+    }));
+  }
+
   // tested ok!
   // TODO: catch error (email already exists, etc.)
   signup(user) {

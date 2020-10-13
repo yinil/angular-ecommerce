@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { CartService } from './cart.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import {UserService} from './user.service';
-import {stringify} from 'querystring';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
