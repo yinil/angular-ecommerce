@@ -18,7 +18,7 @@ export class AccountHomeComponent implements OnInit {
         this.email = data["email"];
         this.username = data["username"];
       }
-    );
+    )
   }
 
 }

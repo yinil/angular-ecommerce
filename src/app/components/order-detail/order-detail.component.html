@@ -1,0 +1,41 @@
+<nav aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink='/account' routerLinkActive="active">Your Account</a></li>
+      <li class="breadcrumb-item active"><a routerLink='/account/orders' routerLinkActive="active">Orders</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Order</li>
+    </ol>
+    <div *ngIf="detail">
+      <p>Order ID: {{detail.orderId}}</p>
+      <p>Order status: {{detail.orderStatus}}</p>
+      <h3>Deliver to</h3>
+      <table class="table">
+        <tr><th>Name</th><td>{{detail.orderFullname}}</td></tr>
+        <tr><th>Address</th>
+          <td>
+            {{detail.orderStreet2}} {{detail.orderStreet1}} {{detail.orderCity}} {{detail.orderState}} {{detail.orderZip}}
+          </td>
+        </tr>
+        <tr><th>Email</th><td>{{detail.orderEmail}}</td></tr>
+        <tr><th>Phone Number</th><td>{{detail.orderPhone}}</td></tr>
+      </table>
+      <h3>Items</h3>
+      <table class="table">
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        <tr *ngFor="let item of detail.orderDetailList">
+          <td>{{item.detailItemname}}</td>
+          <td>{{item.detailQuantity}}</td>
+          <td>{{item.detailPrice}}</td>
+        </tr>
+      </table>
+      <div class="float-right mr-3">
+        <h4>Total: {{detail.orderAmount}}</h4>
+      </div>
+    </div>
+  </div>
+    
+  </nav>

@@ -1,11 +1,41 @@
-<p>account-orders works!</p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink='/account' routerLinkActive="active">Your Account</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+  </ol>
+</nav>
 <h3>Orders</h3>
-<table class="table">
-  <tr>
-    <th>Order ID</th>
-    <th>Order Total</th>
-    <th>Order Placed At</th>
-    <th>Action</th>
-  </tr>
-  <!--  ngFor orders-->
-</table>
+<div *ngIf="orders">
+  <table class="table">
+    <tr>
+      <th>Order ID</th>
+      <th>Total</th>
+      <th>Placed At</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <td><a routerLink='/account/orders/{{order.orderId}}' routerLinkActive="active">{{order.orderId}}</a></td>
+      <td>{{order.orderAmount}}</td>
+      <td>{{order.orderCreatedAt}}</td>
+      <td>status</td>
+    </tr>
+  </table>
+  <nav aria-label="navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a [routerLink]="" class="page-link" (click)="updateOrders(-1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li *ngFor="let i of range" class="page-item">
+        <a [routerLink]="" class="page-link" (click)="updateOrders(i - 1)">{{i}}</a>
+      </li>
+      <li class="page-item">
+        <a [routerLink]="" class="page-link" (click)="updateOrders(-2)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+

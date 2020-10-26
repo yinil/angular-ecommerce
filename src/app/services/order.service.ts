@@ -8,25 +8,45 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class OrderService {
+
   url = "http://localhost:8080/order";
+  httpOptions = {
+    headers: new HttpHeaders({
+      Authorization: this.userService.token
+    })
+  };
+
   constructor(
     private http : HttpClient,
-    private userService: UserService
-  ) { }
+    private userService: UserService) { }
 
   createOrder(model) {
     console.log(this.userService.token);
     if (this.userService.token == null) {
       return null;
     }
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: this.userService.token
-      })
-    };
-    return this.http.post(this.url + '/create', model, httpOptions);
+    return this.http.post(this.url + '/create', model, this.httpOptions);
   }
-  // TODO get order list
+  // get total number of orders
+  numberOfOrders() {
+    let token = this.userService.token;
+    if (token == null || token.length == 0) {
+      console.log("token not valid");
+      return null;
+    }
+    return this.http.get(this.url + '/numberOfOrders?clientid=' + this.userService.userid, this.httpOptions);
+  }
+  listOrdersOnPage(page: number) {
+    let listUrl = this.url + "/list?clientid=" + this.userService.userid;
+    if (page != 0) {
+      listUrl += "&page=" + page;
+    } 
+    return this.http.get(listUrl, this.httpOptions);
+  }
   // TODO cancel order
   // TODO get order details
+  getOrderDetails(orderid) {
+    let detailUrl = this.url + "/detail?clientid=" + this.userService.userid + "&orderid=" + orderid;
+    return this.http.get(detailUrl, this.httpOptions);
+  }
 }

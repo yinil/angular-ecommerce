@@ -1,14 +1,13 @@
-<p>store-detail works!</p>
 <div *ngIf="store">
-    <h2>{{store.storeName}}</h2>
-    <!-- {{store.storeId}}<br/> -->
-    {{store.storePhone}}<br/>
-    {{store.storeEmail}}<br/>
-    {{store.storeWebsite}}<br/>
-    {{store.storeStreet1}}<br/>
-    {{store.storeStreet2}}<br/>
-    {{store.storeCity}} {{store.storeState}} {{store.storeZip}}<br/>
-    <!-- {{store.storeClient}}<br/> -->
+    <h3>{{store.storeName}}</h3>
+    <ul>
+        <li>
+            {{store.storeStreet2}} {{store.storeStreet1}} {{store.storeCity}} {{store.storeState}} {{store.storeZip}}
+        </li>
+        <li>
+            {{store.storePhone}}, {{store.storeEmail}}, {{store.storeWebsite}}
+        </li>
+    </ul>
 </div>
 <br>
 <div *ngIf="items">

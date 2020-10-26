@@ -21,7 +21,6 @@ export class StoreDetailComponent implements OnInit {
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.has('id')) {
       this.storeId = this.route.snapshot.paramMap.get('id');
-      console.log(this.storeId);
     } else {
       console.log("[list stores] id not given");
       throw new Error("[list stores] id not given");

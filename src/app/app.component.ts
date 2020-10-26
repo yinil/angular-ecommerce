@@ -8,7 +8,6 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-
   numInCart: number;
   constructor(private cartService: CartService,
               private userService: UserService) { }
@@ -33,7 +32,6 @@ export class AppComponent implements OnInit{
       return false;
     }
     return true;
-    // return this.userService.authenticated;
   }
 
 }

@@ -24,6 +24,8 @@ import { AccountOrdersComponent } from './components/account-orders/account-orde
 import { AccountMessagesComponent } from './components/account-messages/account-messages.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { OrderFailComponent } from './components/order-fail/order-fail.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { AccountDirectiveDirective } from './directives/account-directive.directive';
 
 const routes: Routes = [
   {path: 'stores', component: StoreListComponent},
@@ -36,6 +38,9 @@ const routes: Routes = [
   {path: 'checkout_confirm', component: CheckoutConfirmComponent},
   {path: 'account', component: AccountComponent},
   {path: 'order_success', component: OrderSuccessComponent},
+  {path: 'account/orders', component: AccountOrdersComponent},
+  {path: 'account/profile', component: AccountHomeComponent},
+  {path: 'account/orders/:id', component: OrderDetailComponent},
   {path: '', redirectTo: '/stores', pathMatch: 'full'},
   {path: '**', redirectTo: '/stores', pathMatch: 'full'}
 ];
@@ -58,6 +63,8 @@ const routes: Routes = [
     AccountMessagesComponent,
     OrderSuccessComponent,
     OrderFailComponent,
+    OrderDetailComponent,
+    AccountDirectiveDirective,
   ],
   imports: [
     RouterModule.forRoot(routes),
